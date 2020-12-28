@@ -1,0 +1,19 @@
+<mat-toolbar class="header">
+  <h2>PowerBI embedded demo</h2>
+</mat-toolbar>
+<mat-sidenav-container class="side-nav-container">
+  <mat-sidenav mode="side" class="sidenav">
+    <h3>Available Reports</h3>
+    <ul>
+      <li *ngFor="let report of myReports"> 
+        <button type="button" class="btn btn-outline-light"
+        (click)="embedReport(report.Id)">{{report.Name}}</button>
+      </li>
+    </ul>
+  </mat-sidenav>
+</mat-sidenav-container>
+<div class="content">
+  <div id="reportContainer">
+    
+  </div>
+</div>

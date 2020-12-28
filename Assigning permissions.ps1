@@ -17,7 +17,7 @@ $Pbi.ResourceAppId = $svcprincipalPbi.AppId
 $Aad = New-Object -TypeName "Microsoft.Open.AzureAD.Model.RequiredResourceAccess"
 $Aad.ResourceAppId = $svcprincipalAAD.AppId
 
-$delPermission1 = New-Object -TypeName "Microsoft.Open.AzureAD.Model.ResourceAccess" 
+$delPermission1 = New-Object -TypeName "Microsoft.Open.AzureAD.Model.ResourceAccess" `
 -ArgumentList "a42657d6-7f20-40e3-b6f0-cee03008a62a","Scope" ## Access the directory as you
 
 $delPermission4 = New-Object -TypeName "Microsoft.Open.AzureAD.Model.ResourceAccess" `
@@ -46,11 +46,9 @@ $delPermission13 = New-Object -TypeName "Microsoft.Open.AzureAD.Model.ResourceAc
 -ArgumentList "b2f1b2fa-f35c-407c-979c-a858a808ba85","Scope" ## View all workspaces
 
 $Aad.ResourceAccess = $delPermission1
-$Pbi.ResourceAccess = $delPermission2, $delPermission3 , $delPermission4 
-, $delPermission5 , $delPermission6 , $delPermission7 , $delPermission8 ,
- $delPermission9 , $delPermission10 , $delPermission11 , $delPermission12 , $delPermission13 
+$Pbi.ResourceAccess = $delPermission2, $delPermission3 , $delPermission4 , $delPermission5 , $delPermission6 , $delPermission7 , $delPermission8 , $delPermission9 , $delPermission10 , $delPermission11 , $delPermission12 , $delPermission13 
 
-$ADApplication = Get-AzureADApplication -All $true | ? { $_.AppId -match "<Your App ID> " }
+$ADApplication = Get-AzureADApplication -All $true | ? { $_.AppId -match "d0f3e85b-34f5-4a72-a8cb-c9ec290c10fb" }
 Set-AzureADApplication -ObjectId $ADApplication.ObjectId -RequiredResourceAccess $Pbi, $Aad
 
 
